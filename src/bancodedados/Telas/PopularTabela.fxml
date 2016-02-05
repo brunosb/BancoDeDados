@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bancodedados.Controllers.PopularTabelaController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button fx:id="btnGerarAuto" mnemonicParsing="false" text="Gerar Automatico" />
+              </items>
+            </ToolBar>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Professor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="txtNomeProf" layoutX="150.0" layoutY="153.0" prefWidth="300.0" />
+                              <Label layoutX="150.0" layoutY="127.0" text="Nome do Professor:" />
+                              <Button fx:id="btnSalvarProf" layoutX="398.0" layoutY="209.0" mnemonicParsing="false" text="Salvar" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Aluno">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="txtNomeAluno" layoutX="150.0" layoutY="97.0" prefWidth="300.0" />
+                              <ComboBox fx:id="cbxProfessorNoAluno" layoutX="150.0" layoutY="141.0" prefWidth="300.0" promptText="Professor" />
+                              <Label layoutX="150.0" layoutY="74.0" text="Nome do Aluno:" />
+                              <Button fx:id="btnSalvarAluno" layoutX="398.0" layoutY="201.0" mnemonicParsing="false" text="Salvar" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Questões">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="txtEnunciado" layoutX="100.0" layoutY="46.0" prefHeight="100.0" prefWidth="400.0" />
+                              <Label layoutX="100.0" layoutY="23.0" text="Enunciado:" />
+                              <VBox layoutX="13.0" layoutY="146.0">
+                                 <children>
+                                    <HBox layoutX="25.0" layoutY="146.0" spacing="30.0">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="146.0" text="Resp. Certa:" />
+                                          <Label layoutX="100.0" layoutY="155.0" text="Respostas:" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="25.0" layoutY="178.0" spacing="50.0">
+                                       <children>
+                                          <RadioButton fx:id="rb1" layoutX="25.0" layoutY="182.0" mnemonicParsing="false">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="tgCerto" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <TextField fx:id="txtResp1" layoutX="100.0" layoutY="178.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="22.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="13.0" layoutY="211.0" spacing="50.0">
+                                       <children>
+                                          <RadioButton fx:id="rb2" layoutX="13.0" layoutY="211.0" mnemonicParsing="false" toggleGroup="$tgCerto" />
+                                          <TextField fx:id="txtResp2" layoutX="100.0" layoutY="219.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="22.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="13.0" layoutY="236.0" spacing="50.0">
+                                       <children>
+                                          <RadioButton fx:id="rb3" layoutX="13.0" layoutY="236.0" mnemonicParsing="false" toggleGroup="$tgCerto" />
+                                          <TextField fx:id="txtResp3" layoutX="100.0" layoutY="259.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="22.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox layoutX="13.0" layoutY="263.0" spacing="50.0">
+                                       <children>
+                                          <RadioButton fx:id="rb4" layoutX="13.0" layoutY="263.0" mnemonicParsing="false" toggleGroup="$tgCerto" />
+                                          <TextField fx:id="txtResp4" layoutX="100.0" layoutY="292.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="22.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="btnSalvarQuestao" layoutX="448.0" layoutY="292.0" mnemonicParsing="false" text="Salvar" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
