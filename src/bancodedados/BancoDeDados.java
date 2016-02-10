@@ -7,13 +7,9 @@ package bancodedados;
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -29,6 +25,7 @@ public class BancoDeDados extends Application {
         primaryStage.setTitle("Trabalho Banco De Dados");
         Scene cena = new Scene(root);
         primaryStage.setScene(cena);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

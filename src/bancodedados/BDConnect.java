@@ -17,23 +17,25 @@ import javafx.scene.control.ButtonType;
  */
 public class BDConnect {
     
-    private static Connection con;
+    private Connection con;
     private static String url = "jdbc:postgresql://localhost:5432/Colegio";
     private static String user = "postgres";
     private static String pass = "postgres";
     
-    public static Connection conect(){
+    public Connection conect() throws SQLException{
         try{
             Class.forName("org.postgresql.Driver").newInstance();
-            con = DriverManager.getConnection(url,user,pass);
-        }catch(Exception e){
+            
+        }catch(ClassNotFoundException | InstantiationException | IllegalAccessException e){
             Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
             a.show();
         }
+        con = DriverManager.getConnection(url,user,pass);
+        System.out.println("banco acessado");
         return con;
     }
     
-    public static Connection getConnection() throws SQLException{
+    public Connection getConnection() throws SQLException{
         if(con != null && !con.isClosed()){
             return con;
         }else{

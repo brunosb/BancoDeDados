@@ -5,14 +5,19 @@
  */
 package bancodedados.Controllers;
 
+import bancodedados.BDConnect;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
@@ -29,7 +34,7 @@ public class PrincipalController implements Initializable {
      */
     
     @FXML
-    public static AnchorPane mCenterPainel;
+    public AnchorPane mCenterPainel;
 
     @FXML
     private Button mBtnEstruturaBD;
@@ -45,11 +50,18 @@ public class PrincipalController implements Initializable {
     private Button btnPopularTabelas;
     private Button btnFazerConsulta;
     private Button btnGerarProvas;
+    public static TextArea sqlLog;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        conectarAoBanco();
+        sqlLog = mTxtSqlLog;
+        
+        try {
+            conectarAoBanco();
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         btnCriarTables = new Button("Criar Tabelas");
         btnCriarTables.setOnAction(criandoTB);
@@ -66,27 +78,42 @@ public class PrincipalController implements Initializable {
         mToolBar.getItems().addAll(btnCriarTables,btnPopularTabelas,btnFazerConsulta,btnGerarProvas);
     }    
     
-    private EventHandler<ActionEvent> criandoTB = (ActionEvent event) -> {
+    private final EventHandler<ActionEvent> criandoTB = (ActionEvent event) -> {
         //codigo sql criando bd no jdbc
     };
     
-    private EventHandler<ActionEvent> popularBD = (ActionEvent event) -> {
-        //chama tela
+    private final EventHandler<ActionEvent> popularBD = (ActionEvent event) -> {
+        try{
+            Parent root = FXMLLoader.load(PopularTabelaController.class.getResource("/bancodedados/Telas/PopularTabela.fxml"));
+            mCenterPainel.getChildren().clear();
+            mCenterPainel.getChildren().add(root);
+        }catch(Exception e){
+            e.getMessage();
+        }
     };
     
-    private EventHandler<ActionEvent> fazerConsulta = (ActionEvent event) -> {
-        //chama tela
+    private final EventHandler<ActionEvent> fazerConsulta = (ActionEvent event) -> {
+        try{
+            Parent root = FXMLLoader.load(PopularTabelaController.class.getResource("/bancodedados/Telas/Perguntas.fxml"));
+            mCenterPainel.getChildren().clear();
+            mCenterPainel.getChildren().add(root);
+        }catch(Exception e){
+            e.getMessage();
+        }
     };
     
-    private EventHandler<ActionEvent> gerarProvas = (ActionEvent event) -> {
-        //chamar tela para compor as questoes
+    private final EventHandler<ActionEvent> gerarProvas = (ActionEvent event) -> {
+        try{
+            Parent root = FXMLLoader.load(PopularTabelaController.class.getResource("/bancodedados/Telas/Provas.fxml"));
+            mCenterPainel.getChildren().clear();
+            mCenterPainel.getChildren().add(root);
+        }catch(Exception e){
+            e.getMessage();
+        }
     };
 
-    private void conectarAoBanco() {
-        
-    }
-    
-    public TextArea getSqlLog(){
-        return this.mTxtSqlLog;
+    private void conectarAoBanco() throws SQLException {
+        BDConnect bd = new BDConnect();
+        bd.conect();
     }
 }

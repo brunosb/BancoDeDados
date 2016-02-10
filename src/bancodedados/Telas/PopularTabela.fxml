@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bancodedados.Controllers.PopularTabelaController">
+<AnchorPane id="AnchorPane" minHeight="560.0" minWidth="1366.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bancodedados.Controllers.PopularTabelaController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -25,9 +24,9 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="txtNomeProf" layoutX="150.0" layoutY="153.0" prefWidth="300.0" />
-                              <Label layoutX="150.0" layoutY="127.0" text="Nome do Professor:" />
-                              <Button fx:id="btnSalvarProf" layoutX="398.0" layoutY="209.0" mnemonicParsing="false" text="Salvar" />
+                              <TextField fx:id="txtNomeProf" layoutX="533.0" layoutY="165.0" prefWidth="300.0" />
+                              <Label layoutX="533.0" layoutY="139.0" text="Nome do Professor:" />
+                              <Button fx:id="btnSalvarProf" layoutX="781.0" layoutY="221.0" mnemonicParsing="false" text="Salvar" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -36,10 +35,10 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="txtNomeAluno" layoutX="150.0" layoutY="97.0" prefWidth="300.0" />
-                              <ComboBox fx:id="cbxProfessorNoAluno" layoutX="150.0" layoutY="141.0" prefWidth="300.0" promptText="Professor" />
-                              <Label layoutX="150.0" layoutY="74.0" text="Nome do Aluno:" />
-                              <Button fx:id="btnSalvarAluno" layoutX="398.0" layoutY="201.0" mnemonicParsing="false" text="Salvar" />
+                              <TextField fx:id="txtNomeAluno" layoutX="533.0" layoutY="193.0" prefWidth="300.0" />
+                              <ComboBox fx:id="cbxProfessorNoAluno" layoutX="533.0" layoutY="237.0" prefWidth="300.0" promptText="Professor" />
+                              <Label layoutX="533.0" layoutY="170.0" text="Nome do Aluno:" />
+                              <Button fx:id="btnSalvarAluno" layoutX="781.0" layoutY="297.0" mnemonicParsing="false" text="Salvar" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -48,9 +47,9 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="txtEnunciado" layoutX="100.0" layoutY="46.0" prefHeight="100.0" prefWidth="400.0" />
-                              <Label layoutX="100.0" layoutY="23.0" text="Enunciado:" />
-                              <VBox layoutX="13.0" layoutY="146.0">
+                              <TextArea fx:id="txtEnunciado" layoutX="527.0" layoutY="122.0" prefHeight="100.0" prefWidth="400.0" />
+                              <Label layoutX="527.0" layoutY="99.0" text="Enunciado:" />
+                              <VBox layoutX="440.0" layoutY="222.0">
                                  <children>
                                     <HBox layoutX="25.0" layoutY="146.0" spacing="30.0">
                                        <children>
@@ -104,7 +103,7 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <Button fx:id="btnSalvarQuestao" layoutX="448.0" layoutY="292.0" mnemonicParsing="false" text="Salvar" />
+                              <Button fx:id="btnSalvarQuestao" layoutX="875.0" layoutY="368.0" mnemonicParsing="false" text="Salvar" />
                            </children>
                         </AnchorPane>
                     </content>

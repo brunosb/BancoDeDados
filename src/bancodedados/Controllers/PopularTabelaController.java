@@ -27,61 +27,49 @@ public class PopularTabelaController implements Initializable {
      * Initializes the controller class.
      */
     
-    @FXML
-    private RadioButton rb1;
-
-    @FXML
-    private RadioButton rb3;
-
-    @FXML
-    private Button btnSalvarQuestao;
-
-    @FXML
-    private RadioButton rb2;
-
-    @FXML
-    private Button btnSalvarProf;
-
-    @FXML
-    private RadioButton rb4;
-
-    @FXML
-    private TextField txtResp1;
-
-    @FXML
-    private TextField txtResp3;
-
-    @FXML
-    private ComboBox<?> cbxProfessorNoAluno;
-
-    @FXML
-    private TextArea txtEnunciado;
-
-    @FXML
-    private TextField txtResp2;
-
-    @FXML
-    private Button btnSalvarAluno;
-
-    @FXML
-    private Button btnGerarAuto;
-
-    @FXML
-    private ToggleGroup tgCerto;
-
-    @FXML
-    private TextField txtResp4;
-
+    //Professor
     @FXML
     private TextField txtNomeProf;
-
+    @FXML
+    private Button btnSalvarProf;
+    //Aluno
     @FXML
     private TextField txtNomeAluno;
-
+    @FXML
+    private ComboBox<String> cbxProfessorNoAluno;
+    @FXML
+    private Button btnSalvarAluno;
+    //Questoes
+    @FXML
+    private TextArea txtEnunciado;
+    @FXML
+    private ToggleGroup tgCerto;
+    @FXML
+    private RadioButton rb1;
+    @FXML
+    private RadioButton rb2;
+    @FXML
+    private RadioButton rb3;
+    @FXML
+    private RadioButton rb4;
+    @FXML
+    private TextField txtResp1;
+    @FXML
+    private TextField txtResp2;
+    @FXML
+    private TextField txtResp3;
+    @FXML
+    private TextField txtResp4;
+    @FXML
+    private Button btnSalvarQuestao;
+    //Auto
+    @FXML
+    private Button btnGerarAuto;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }
