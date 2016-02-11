@@ -14,7 +14,7 @@
          <bottom>
             <TextArea fx:id="mTxtSqlLog" editable="false" prefHeight="100.0" promptText="SQL - Log" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </TextArea>
          </bottom>
