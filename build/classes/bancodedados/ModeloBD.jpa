@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings jaxb-support="false" id="_14544202014831" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Professor" visibile="true" minimized="false" id="_1454420228774">
+        <jpa:attributes>
+            <jpa:id name="id_Prof" attribute-type="Long" visibile="true" id="_14544202336825">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="Nome" attribute-type="String" visibile="true" id="_14544202370526">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Aluno" visibile="true" minimized="false" id="_1454420269700">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_14544202895848">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nome" attribute-type="String" visibile="true" id="_14544202999549">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many name="professor1" target-entity="Professor" connected-entity-id="_1454420228774" visibile="true" id="_145467555901017"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Assunto" visibile="true" minimized="false" id="_1454420551551">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_145442060350417">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Disciplina" attribute-type="String" visibile="true" id="_145442060652318">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many name="professor" target-entity="Professor" connected-entity-id="_1454420228774" visibile="true" id="_145442067798019">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Questoes" visibile="true" minimized="false" id="_1454420554701">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_145442086995020">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Pergunta(texto)" attribute-type="String" visibile="true" id="_145442088380721">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="assunto" target-entity="Assunto" primaryKey="false" connected-entity-id="_1454420551551" visibile="true" id="_145442094983923">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-one name="resposta_correta" target-entity="Resposta" primaryKey="false" connected-entity-id="_1454420558341" visibile="true" id="_145442144199230">
+                <jpa:join-table/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Resposta" visibile="true" minimized="false" id="_1454420558341">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_145442103002924">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Resposta(texto)" attribute-type="String" visibile="true" id="_145442135693126">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="questoes1" target-entity="Questoes" primaryKey="false" connected-entity-id="_1454420554701" visibile="true" id="_145442139582827"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Notas" visibile="true" minimized="false" id="_1454420562208">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" visibile="true" id="_145442154283331">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nota" attribute-type="String" visibile="true" id="_145442155370032">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="assunto" target-entity="Assunto" primaryKey="false" connected-entity-id="_1454420551551" visibile="true" id="_145442157857733">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="aluno1" target-entity="Aluno" primaryKey="false" connected-entity-id="_1454420269700" visibile="true" id="_145442163081934"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14544202014832">
+        <plane elementRef="_14544202014831" id="_14544202014843_p">
+            <shape elementRef="_1454420228774" id="_1454420228774_gui">
+                <Bounds x="32.0" y="49.0" width="153.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1454420269700" id="_1454420269700_gui">
+                <Bounds x="335.0" y="84.0" width="128.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1454420551551" id="_1454420551551_gui">
+                <Bounds x="551.0" y="142.0" width="143.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1454420554701" id="_1454420554701_gui">
+                <Bounds x="825.0" y="121.0" width="151.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1454420558341" id="_1454420558341_gui">
+                <Bounds x="401.0" y="356.0" width="150.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1454420562208" id="_1454420562208_gui">
+                <Bounds x="56.0" y="297.0" width="129.0" height="147.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
