@@ -168,13 +168,17 @@ public class PrincipalController implements Initializable {
         return bd.conect();
     }
 
-    private void deletarTabelas(Statement s) throws SQLException {
-        s.execute("Drop table Professor");
-        s.execute("Drop table Aluno");
-        s.execute("Drop table Questao");
-        s.execute("Drop table Resposta");
-        s.execute("Drop table Assunto");
-        s.execute("Drop table Nota");
-        sqlLog.setText("Banco Resetado!!!");
+    private void deletarTabelas(Statement s){
+        try{
+            s.execute("Drop table Professor");
+            s.execute("Drop table Aluno");
+            s.execute("Drop table Questao");
+            s.execute("Drop table Resposta");
+            s.execute("Drop table Assunto");
+            s.execute("Drop table Nota");
+            sqlLog.setText("Banco Resetado!!!");
+        }catch(SQLException e){
+            return;
+        }
     }
 }

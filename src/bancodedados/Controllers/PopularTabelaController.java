@@ -6,7 +6,14 @@
 package bancodedados.Controllers;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -39,6 +46,13 @@ public class PopularTabelaController implements Initializable {
     private ComboBox<String> cbxProfessorNoAluno;
     @FXML
     private Button btnSalvarAluno;
+    //Assuntos
+    @FXML
+    private TextField txtAssunto;
+    @FXML
+    private ComboBox<?> cbxAssuntoProfessor;
+    @FXML
+    private Button btnSalvarAssunto;
     //Questoes
     @FXML
     private TextArea txtEnunciado;
@@ -66,10 +80,25 @@ public class PopularTabelaController implements Initializable {
     @FXML
     private Button btnGerarAuto;
     
+    private Connection con = PrincipalController.bdConnect;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        btnGerarAuto.setOnAction((ActionEvent event) -> {
+            
+            String[] professores = {"Roberto","Cesar","Barroso"};
+            String[] alunos = new String[5];
+            String[] assuntos = new String[5];
+            
+            try {
+                Statement s = con.createStatement();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(PopularTabelaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
     }    
     
 }
