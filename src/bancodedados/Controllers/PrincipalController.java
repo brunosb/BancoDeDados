@@ -94,10 +94,10 @@ public class PrincipalController implements Initializable {
         
         sqlArray[0] = "Create Table Professor "
                 + "(id serial primary key, "
-                + "nome varchar(50))";
+                + "nome varchar(50) not null)";
         sqlArray[1] = "Create Table Aluno "
                 + "(id serial primary key, "
-                + "nome varchar(50), "
+                + "nome varchar(50) not null, "
                 + "professor_id int)";
         sqlArray[2] = "Create Table Assunto "
                 + "(id serial primary key, "
@@ -106,11 +106,11 @@ public class PrincipalController implements Initializable {
         sqlArray[3] = "Create Table Questao "
                 + "(id serial primary key, "
                 + "assunto_id int, "
-                + "pergunta varchar(255), "
+                + "pergunta text not null, "
                 + "resposta_id int)";
         sqlArray[4] = "Create Table Resposta "
                 + "(id serial primary key, "
-                + "resposta varchar(255), "
+                + "resposta text not null, "
                 + "questao_id int)";
         sqlArray[5] = "Create Table Nota "
                 + "(id serial primary key, "
@@ -126,7 +126,7 @@ public class PrincipalController implements Initializable {
                 sqlLog.appendText("\n"+sqlArray[i]);
             }
             s.close();
-            
+            sqlLog.appendText("\n----------------------------------------------------------------------------------");
         }catch(Exception e){
             Alert a = new Alert(Alert.AlertType.ERROR, e.toString(), ButtonType.OK);
             a.show();

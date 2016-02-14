@@ -20,7 +20,7 @@
          <center>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab text="Professor">
+                <Tab closable="false" text="Professor">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -31,7 +31,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Aluno">
+                <Tab closable="false" text="Aluno">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -43,7 +43,19 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Questões">
+                  <Tab closable="false" text="Assunto">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="txtAssunto" layoutX="533.0" layoutY="233.0" prefWidth="300.0" />
+                              <Label layoutX="533.0" layoutY="210.0" text="Assunto:" />
+                              <ComboBox fx:id="cbxAssuntoProfessor" layoutX="533.0" layoutY="280.0" prefWidth="300.0" promptText="Professor" />
+                              <Button fx:id="btnSalvarAssunto" layoutX="781.0" layoutY="353.0" mnemonicParsing="false" text="Salvar" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="Questões">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

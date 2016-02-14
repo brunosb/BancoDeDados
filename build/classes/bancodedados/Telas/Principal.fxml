@@ -11,15 +11,17 @@
 <AnchorPane id="AnchorPane" minHeight="600.0" minWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bancodedados.Controllers.PrincipalController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <TextArea fx:id="mTxtSqlLog" editable="false" prefHeight="100.0" promptText="SQL - Log" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextArea>
-         </bottom>
          <center>
-            <AnchorPane fx:id="mCenterPainel" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER" />
+            <SplitPane dividerPositions="0.8" orientation="VERTICAL">
+               <items>
+                  <AnchorPane fx:id="mCenterPainel" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER" />
+                  <TextArea fx:id="mTxtSqlLog" editable="false" prefHeight="100.0" promptText="SQL - Log">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+               </items>
+            </SplitPane>
          </center>
          <top>
             <AnchorPane BorderPane.alignment="CENTER">
