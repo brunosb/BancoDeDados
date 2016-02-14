@@ -6,6 +6,7 @@
 package bancodedados.Controllers;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,8 +41,12 @@ public class ProvasController implements Initializable {
     @FXML
     private Pagination mPagination;
     
+    private Connection  con = PrincipalController.bdConnect;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Popular cbx de alunos
+        
         
     }    
     
