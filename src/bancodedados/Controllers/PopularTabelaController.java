@@ -90,9 +90,18 @@ public class PopularTabelaController implements Initializable {
         
         btnGerarAuto.setOnAction((ActionEvent event) -> {
             
-            String[] professores = {"Roberto","Cesar","Barroso"};
-            String[] alunos = {"Bruno","Cicero","Jefferson"};
-            String[] assuntos = {"Matematica","Portugues","Ingles","Historia","Geografia","Quimica"};
+            String[] professores = {"Roberto","Cesar","Barroso","Eduardo","Jonas","Tulio","Albert","Rodrigues"};
+            
+            String[] turmas = {"A1","A2","A3","B1","B2","B3","C1","C2","C3"};
+            
+            String[] alunos = {"Bruno","Cicero","Jefferson","Gustavo","Lucas","Enzo","Gabriel","Diego","Vitor","Pedro","Leonardo","Rafael",
+                                "Matheus","Miguel","Arthur","Joao","Lorenzo","Benjamin","Antonio","Nicolas","Carlos","Daniel","Alexandre",
+                                "Jose","Andre","Thiago","Caio","Paulo",
+                                "Isabela","Camila","Fernanda","Manuela","Rebeca","Helena","Giovanna","Aline","Isadora","Nicole","Gabriela",
+                                "Vanessa","Jessica","Luisa","Lorena","Bianca","Beatriz","Sofia","Julia","Ana","Yasmin","Lara","Mariana","Carolina"};
+            
+            String[] disciplinas = {"Matematica","Portugues","Ingles","Historia","Geografia","Quimica"};
+            
             String[] questoes = {"A planta de um apartamento está confeccionada na escala 1 : 50. Então a área\n"
                                 + " real, em m2, de uma sala retangular cujas medidas na planta, são 12 cm e 14 cm é:",
                             "José emprestou R$ 500,00 a João por 5 meses, no sistema de juros simples, a uma taxa de juros fixa e\n"
@@ -257,54 +266,83 @@ public class PopularTabelaController implements Initializable {
                                                                 "O Cs é um elemento menos eletronegativo que o oxigênio.",
                                                                 "O Cs tem distribuição eletrônica cujo elétron mais externo fica em um orbital d."};
             
-            String[] sqlUpdade =   {"update questao set resposta_id = 4 where id = 1;",
-                                    "update questao set resposta_id = 8 where id = 2;",
-                                    "update questao set resposta_id = 10 where id = 3;",
-                                    "update questao set resposta_id = 15 where id = 4;",
-                                    "update questao set resposta_id = 19 where id = 5;",
-                                    "update questao set resposta_id = 24 where id = 6;",
-                                    "update questao set resposta_id = 27 where id = 7;",
-                                    "update questao set resposta_id = 31 where id = 8;",
-                                    "update questao set resposta_id = 35 where id = 9;",
-                                    "update questao set resposta_id = 39 where id = 10;",
-                                    "update questao set resposta_id = 44 where id = 11;",
-                                    "update questao set resposta_id = 45 where id = 12;",
-                                    "update questao set resposta_id = 52 where id = 13;",
-                                    "update questao set resposta_id = 54 where id = 14;",
-                                    "update questao set resposta_id = 59 where id = 15;",
-                                    "update questao set resposta_id = 64 where id = 16;",
-                                    "update questao set resposta_id = 67 where id = 17;",
-                                    "update questao set resposta_id = 71 where id = 18;"};
+            String[] sqlUpdade =   {"update questao set resposta_id_correta = 4 where id_questao = 1;",
+                                    "update questao set resposta_id_correta = 8 where id_questao = 2;",
+                                    "update questao set resposta_id_correta = 10 where id_questao = 3;",
+                                    "update questao set resposta_id_correta = 15 where id_questao = 4;",
+                                    "update questao set resposta_id_correta = 19 where id_questao = 5;",
+                                    "update questao set resposta_id_correta = 24 where id_questao = 6;",
+                                    "update questao set resposta_id_correta = 27 where id_questao = 7;",
+                                    "update questao set resposta_id_correta = 31 where id_questao = 8;",
+                                    "update questao set resposta_id_correta = 35 where id_questao = 9;",
+                                    "update questao set resposta_id_correta = 39 where id_questao = 10;",
+                                    "update questao set resposta_id_correta = 44 where id_questao = 11;",
+                                    "update questao set resposta_id_correta = 45 where id_questao = 12;",
+                                    "update questao set resposta_id_correta = 52 where id_questao = 13;",
+                                    "update questao set resposta_id_correta = 54 where id_questao = 14;",
+                                    "update questao set resposta_id_correta = 59 where id_questao = 15;",
+                                    "update questao set resposta_id_correta = 64 where id_questao = 16;",
+                                    "update questao set resposta_id_correta = 67 where id_questao = 17;",
+                                    "update questao set resposta_id_correta = 71 where id_questao = 18;"};
             
             try {
                 Statement s = con.createStatement();
                 String sql = "";
+                
+                //Professores
                 for(int i=0;i<professores.length;i++){
-                    sql = "insert into professor (nome) values ('"+professores[i]+"')";
+                    sql = "insert into professor (nome_professor) values ('"+professores[i]+"')";
                     s.execute(sql);
                     PrincipalController.sqlLog.appendText("\n"+sql);
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
                 
+                //Turmas
+                for(int i=0;i<turmas.length;i++){
+                    sql = "insert into turma (nome_turma) values ('"+turmas[i]+"')";
+                    s.execute(sql);
+                    PrincipalController.sqlLog.appendText("\n"+sql);
+                }
+                PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
+                
+                //Professor_Turma
+                for(int i=1;i<=professores.length;i++){
+                    int max = 1;
+                    while(max<=3){
+                        sql = "insert into professor_turma (professor_id,turma_id) values ('"+i+"',"+sorteio(1, (turmas.length), new Random())+")";
+                        s.execute(sql);
+                        PrincipalController.sqlLog.appendText("\n"+sql);
+                        max++;
+                    }
+                }
+                PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
+                
+                //Alunos
                 for(int i=0;i<alunos.length;i++){
-                    sql = "insert into aluno (nome,professor_id) values ('"+alunos[i]+"',"+sorteio(1,professores.length,new Random())+")";
+                    if(i<28){
+                        sql = "insert into aluno (nome_aluno,sexo,turma_id) values ('"+alunos[i]+"','Masculino',"+sorteio(1, turmas.length, new Random())+")";
+                    }else{
+                        sql = "insert into aluno (nome_aluno,sexo,turma_id) values ('"+alunos[i]+"','Feminino',"+sorteio(1, turmas.length, new Random())+")";
+                    }
                     s.execute(sql);
                     PrincipalController.sqlLog.appendText("\n"+sql);
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
             
-                for(int i=0;i<assuntos.length;i++){
-                    sql = "insert into assunto (disciplina,professor_id) values ('"+assuntos[i]+"',"+sorteio(1, professores.length, new Random())+")";
+                //Disciplinas
+                for(int i=0;i<disciplinas.length;i++){
+                    sql = "insert into disciplina (nome_disciplina,professor_id) values ('"+disciplinas[i]+"',"+sorteio(1, professores.length, new Random())+")";
                     s.execute(sql);
                     PrincipalController.sqlLog.appendText("\n"+sql);
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
             
-                int ass = 0;//controle de assunto
+                //Questoes
+                int ass = 1;//controle de assunto
                 int quest = 0;//controle de questao
                 for(int i=0;i<questoes.length;i++){
                     quest++;
-                    sql = "insert into questao (assunto_id,pergunta) values ("+ass+",'"+questoes[i]+"')";
+                    sql = "insert into questao (disciplina_id,pergunta) values ("+ass+",'"+questoes[i]+"')";
                     s.execute(sql);
                     PrincipalController.sqlLog.appendText("\n"+sql);
                     if(quest == 3){
@@ -314,7 +352,8 @@ public class PopularTabelaController implements Initializable {
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
                 
-                int ques = 0;//controle do id da questao
+                //Respostas
+                int ques = 1;//controle do id da questao
                 int resp = 0;
                 for(int i=0;i<respostas.length;i++){
                     resp++;
@@ -328,15 +367,17 @@ public class PopularTabelaController implements Initializable {
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
                 
+                //Atualizando Questoes
                 for(int i=0;i<sqlUpdade.length;i++){
                     s.execute(sqlUpdade[i]);
                     PrincipalController.sqlLog.appendText("\n"+sqlUpdade[i]);
                 }
                 PrincipalController.sqlLog.appendText("\n----------------------------------------------------------------------------------");
                 
+                //Notas
                 for(int i=0;i<=alunos.length-1;i++){
-                    for(int j=0;j<=assuntos.length-1;j++){
-                        sql = "insert into nota (nota, assunto_id, aluno_id) values ("+sorteioNota(0, 10, new Random())+","+(j+1)+","+(i+1)+")";
+                    for(int j=0;j<=disciplinas.length-1;j++){
+                        sql = "insert into nota (pontos, disciplina_id, aluno_matricula) values ("+sorteioNota(0, 10, new Random())+","+(j+1)+","+(i+1)+")";
                         s.execute(sql);
                     PrincipalController.sqlLog.appendText("\n"+sql);
                     }

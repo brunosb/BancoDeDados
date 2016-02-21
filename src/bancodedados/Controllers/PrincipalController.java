@@ -21,12 +21,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -86,37 +90,53 @@ public class PrincipalController implements Initializable {
         btnGerarProvas.setOnAction(gerarProvas);
         
         mToolBar.getItems().addAll(btnCriarTables,btnPopularTabelas,btnFazerConsulta,btnGerarProvas);
+        
+        mBtnEstruturaBD.setOnAction(mostrarEstrutura);
     }    
     
     private final EventHandler<ActionEvent> criandoTB = (ActionEvent event) -> {
-        //codigo sql criando bd no jdbc
-        String[] sqlArray = new String[6];
+        //codigo sql criando tables no db
+        String[] sqlArray = new String[8];
         
         sqlArray[0] = "Create Table Professor "
-                + "(id serial primary key, "
-                + "nome varchar(50) not null)";
-        sqlArray[1] = "Create Table Aluno "
-                + "(id serial primary key, "
-                + "nome varchar(50) not null, "
-                + "professor_id int)";
-        sqlArray[2] = "Create Table Assunto "
-                + "(id serial primary key, "
-                + "disciplina varchar(30), "
-                + "professor_id int)";
-        sqlArray[3] = "Create Table Questao "
-                + "(id serial primary key, "
-                + "assunto_id int, "
+                + "(id_Professor serial primary key, "
+                + "nome_professor varchar(50) not null)";
+        
+        sqlArray[1] = "Create Table Professor_Turma "
+                + "(professor_id int not null, "
+                + "turma_id int not null)";
+        
+        sqlArray[2] = "Create Table Turma "
+                + "(id_Turma serial primary key, "
+                + "nome_turma varchar(2) not null)";
+        
+        sqlArray[3] = "Create Table Aluno "
+                + "(id_Aluno serial primary key, "
+                + "nome_aluno varchar(50) not null, "
+                + "sexo varchar(10) not null, "
+                + "turma_id int not null)";
+        
+        sqlArray[4] = "Create Table Disciplina "
+                + "(id_Disciplina serial primary key, "
+                + "nome_disciplina varchar(30) not null, "
+                + "professor_id int not null)";
+        
+        sqlArray[5] = "Create Table Questao "
+                + "(id_Questao serial primary key, "
+                + "disciplina_id int not null, "
                 + "pergunta text not null, "
-                + "resposta_id int)";
-        sqlArray[4] = "Create Table Resposta "
-                + "(id serial primary key, "
+                + "resposta_id_correta int)";
+        
+        sqlArray[6] = "Create Table Resposta "
+                + "(id_Resposta serial primary key, "
                 + "resposta text not null, "
                 + "questao_id int)";
-        sqlArray[5] = "Create Table Nota "
-                + "(id serial primary key, "
-                + "nota double precision, "
-                + "assunto_id int, "
-                + "aluno_id int)";
+        
+        sqlArray[7] = "Create Table Nota "
+                + "(id_Nota serial primary key, "
+                + "pontos double precision not null, "
+                + "disciplina_id int not null, "
+                + "aluno_matricula int not null)";
         
         try{
             Statement s = bdConnect.createStatement();
@@ -171,14 +191,25 @@ public class PrincipalController implements Initializable {
     private void deletarTabelas(Statement s){
         try{
             s.execute("Drop table Professor");
+            s.execute("Drop table Professor_Turma");
+            s.execute("Drop table Turma");
             s.execute("Drop table Aluno");
             s.execute("Drop table Questao");
             s.execute("Drop table Resposta");
-            s.execute("Drop table Assunto");
+            s.execute("Drop table Disciplina");
             s.execute("Drop table Nota");
             sqlLog.setText("Banco Resetado!!!");
         }catch(SQLException e){
             return;
         }
     }
+    
+    private final EventHandler<ActionEvent> mostrarEstrutura = (ActionEvent e) ->{
+        Stage st = new Stage();
+        Parent p = new AnchorPane(new ImageView(new Image("/bancodedados/Model_db_colegio.png")));
+        Scene c = new Scene(p,1091,617);
+        st.setScene(c);
+        st.setTitle("Modelo do Banco de Dados");
+        st.show();
+    };
 }

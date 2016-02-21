@@ -58,7 +58,7 @@ public class PerguntasController implements Initializable {
         cbxPerguntas.valueProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             try {
                 switch(newValue){
-                    case "Teste":{String sql = "select nome from aluno";
+                    case "Teste":{String sql = "select * from questao ";
                                 ResultSet rs = con.createStatement().executeQuery(sql);
                                 criarTabelaDinamica(rs);
                                 preencherTabela(rs);
@@ -68,9 +68,9 @@ public class PerguntasController implements Initializable {
                 
                 }
             } catch (SQLException e) {
-                    Alert a = new Alert(Alert.AlertType.ERROR, e.toString(), ButtonType.OK);
-                    a.show();
-                }
+                Alert a = new Alert(Alert.AlertType.ERROR, e.toString(), ButtonType.OK);
+                a.show();
+            }
         });
     }    
 
