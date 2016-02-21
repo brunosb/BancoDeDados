@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings jaxb-support="false" id="_14559775080381" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Professor" visibile="true" minimized="false" id="_1455977528889">
+        <jpa:attributes>
+            <jpa:id name="id_Professor" attribute-type="Long" visibile="true" id="_145597763732011">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nome_Professor" attribute-type="String" visibile="true" id="_145597765341412">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Aluno" visibile="true" minimized="false" id="_1455977547925">
+        <jpa:attributes>
+            <jpa:id name="Matricula" attribute-type="Long" visibile="true" id="_145597822367620">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nome_Aluno" attribute-type="String" visibile="true" id="_145597823479321">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic name="Sexo" attribute-type="String" visibile="true" id="_145598129258373">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-one name="Turma_id" target-entity="Turma" primaryKey="false" connected-entity-id="_1455977551857" visibile="true" id="_145597835281022">
+                <jpa:join-table/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Turma" visibile="true" minimized="false" id="_1455977551857">
+        <jpa:attributes>
+            <jpa:id name="id_Turma" attribute-type="Long" visibile="true" id="_145597775238514">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nome_Turma" attribute-type="String" visibile="true" id="_145597777739715">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Disciplina" visibile="true" minimized="false" id="_1455977556763">
+        <jpa:attributes>
+            <jpa:id name="id_Disciplina" attribute-type="Long" visibile="true" id="_145597841476639">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nome_Disciplina" attribute-type="String" visibile="true" id="_145597842858440">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="Professor_id" target-entity="Professor" primaryKey="false" connected-entity-id="_1455977528889" visibile="true" id="_145597880291341">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Questao" visibile="true" minimized="false" id="_1455977560816">
+        <jpa:attributes>
+            <jpa:id name="id_Questao" attribute-type="Long" visibile="true" id="_145597889703242">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Pergunta" attribute-type="String" visibile="true" id="_145597890765143">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="Disciplina_id" target-entity="Disciplina" primaryKey="false" connected-entity-id="_1455977556763" visibile="true" id="_145597914584047">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-one name="Resposta_id_Correta" target-entity="Resposta" primaryKey="false" connected-entity-id="_1455977562722" visibile="true" id="_145597918810448">
+                <jpa:join-table/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Resposta" visibile="true" minimized="false" id="_1455977562722">
+        <jpa:attributes>
+            <jpa:id name="id_Resposta" attribute-type="Long" visibile="true" id="_145597899375144">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Resposta" attribute-type="String" visibile="true" id="_145597902793745">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="Questao_id" target-entity="Questao" primaryKey="false" connected-entity-id="_1455977560816" visibile="true" id="_145597905291846">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Nota" visibile="true" minimized="false" id="_1455977565274">
+        <jpa:attributes>
+            <jpa:id name="id_Nota" attribute-type="Long" visibile="true" id="_145597926127449">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="Nota" attribute-type="String" visibile="true" id="_145597927082550">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one name="Aluno_Matricula" target-entity="Aluno" primaryKey="false" connected-entity-id="_1455977547925" visibile="true" id="_145597930917651">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-one name="Disciplina_id" target-entity="Disciplina" primaryKey="false" connected-entity-id="_1455977556763" visibile="true" id="_145597936738652">
+                <jpa:join-table/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Professor_Turma" visibile="true" minimized="false" id="_1455977811163">
+        <jpa:attributes>
+            <jpa:many-to-one name="professor_id" target-entity="Professor" primaryKey="false" connected-entity-id="_1455977528889" visibile="true" id="_145597789919718">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="turma_id" target-entity="Turma" primaryKey="false" connected-entity-id="_1455977551857" visibile="true" id="_145597791569519">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14559775080382">
+        <plane elementRef="_14559775080381" id="_14559775080383_p">
+            <shape elementRef="_1455977528889" id="_1455977528889_gui">
+                <Bounds x="85.0" y="27.0" width="153.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1455977547925" id="_1455977547925_gui">
+                <Bounds x="996.0" y="118.0" width="128.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1455977551857" id="_1455977551857_gui">
+                <Bounds x="715.0" y="27.0" width="133.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1455977556763" id="_1455977556763_gui">
+                <Bounds x="139.0" y="244.0" width="151.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1455977560816" id="_1455977560816_gui">
+                <Bounds x="418.0" y="291.0" width="176.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1455977562722" id="_1455977562722_gui">
+                <Bounds x="760.0" y="453.0" width="150.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1455977565274" id="_1455977565274_gui">
+                <Bounds x="980.0" y="464.0" width="144.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1455977811163" id="_1455977811163_gui">
+                <Bounds x="372.0" y="144.0" width="200.0" height="81.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
