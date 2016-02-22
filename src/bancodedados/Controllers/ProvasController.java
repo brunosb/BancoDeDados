@@ -5,7 +5,7 @@
  */
 package bancodedados.Controllers;
 
-import bancodedados.Prova.Prova;
+import bancodedados.Utilitarios.Prova;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;

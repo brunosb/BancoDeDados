@@ -44,9 +44,7 @@
             <jpa:basic name="Nome_Disciplina" attribute-type="String" visibile="true" id="_145597842858440">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
-            <jpa:many-to-one name="Professor_id" target-entity="Professor" primaryKey="false" connected-entity-id="_1455977528889" visibile="true" id="_145597880291341">
-                <jpa:join-table/>
-            </jpa:many-to-one>
+            <jpa:many-to-one name="professor1" target-entity="Professor" primaryKey="false" connected-entity-id="_1455977528889" visibile="true" id="_145615948522522"/>
         </jpa:attributes>
     </jpa:entity>
     <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Questao" visibile="true" minimized="false" id="_1455977560816">

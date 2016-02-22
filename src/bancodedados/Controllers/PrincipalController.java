@@ -111,7 +111,7 @@ public class PrincipalController implements Initializable {
                 + "nome_turma varchar(2) not null)";
         
         sqlArray[3] = "Create Table Aluno "
-                + "(id_Aluno serial primary key, "
+                + "(matricula serial primary key, "
                 + "nome_aluno varchar(50) not null, "
                 + "sexo varchar(10) not null, "
                 + "turma_id int not null)";
